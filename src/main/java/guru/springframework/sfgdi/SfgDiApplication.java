@@ -1,6 +1,9 @@
 package guru.springframework.sfgdi;
 
+import guru.springframework.sfgdi.controllers.ConstructorInjectionController;
 import guru.springframework.sfgdi.controllers.MyController;
+import guru.springframework.sfgdi.controllers.PropertyInjectionController;
+import guru.springframework.sfgdi.controllers.SetterInjectionController;
 import guru.springframework.sfgdi.services.MyOtherService;
 import guru.springframework.sfgdi.services.MyService;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +27,25 @@ public class SfgDiApplication {
 
 		MyOtherService myOtherService = (MyOtherService)ctx.getBean("myOtherService");
 		myOtherService.saySomethingElse();
+
+
+		System.out.println("------------------PropertyInjectionController");
+		PropertyInjectionController propertyInjectionController =
+			(PropertyInjectionController)ctx.getBean("propertyInjectionController");
+		System.out.println(propertyInjectionController.getGreting());
+
+
+		System.out.println("---------------------SetterInjectionController");
+		SetterInjectionController setterInjectionController =
+			(SetterInjectionController) ctx.getBean("setterInjectionController");
+		System.out.println(setterInjectionController.getGreetings());
+
+		System.out.println("---------------------ConstructorInjectionController");
+		ConstructorInjectionController constructorInjectionController =
+			(ConstructorInjectionController) ctx.getBean("constructorInjectionController");
+		System.out.println(constructorInjectionController.getGreetings());
+
+
 
 
 	}
